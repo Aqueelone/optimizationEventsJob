@@ -20,9 +20,9 @@ public class EventDTO implements Serializable {
 
     private Instant created;
 
-    private Long campaignId;
-
     private Long publisherId;
+
+    private Long campaignId;
 
     public Long getId() {
         return id;
@@ -48,20 +48,20 @@ public class EventDTO implements Serializable {
         this.created = created;
     }
 
-    public Long getCampaignId() {
-        return campaignId;
-    }
-
-    public void setCampaignId(Long campaignId) {
-        this.campaignId = campaignId;
-    }
-
     public Long getPublisherId() {
         return publisherId;
     }
 
     public void setPublisherId(Long publisherId) {
         this.publisherId = publisherId;
+    }
+
+    public Long getCampaignId() {
+        return campaignId;
+    }
+
+    public void setCampaignId(Long campaignId) {
+        this.campaignId = campaignId;
     }
 
     @Override

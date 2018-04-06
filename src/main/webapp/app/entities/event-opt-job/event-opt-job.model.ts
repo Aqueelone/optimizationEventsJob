@@ -5,8 +5,8 @@ export class EventOptJob implements BaseEntity {
         public id?: number,
         public type?: string,
         public created?: any,
-        public campaignId?: number,
         public publisherId?: number,
+        public campaignId?: number,
     ) {
     }
 }

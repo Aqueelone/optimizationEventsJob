@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface PublisherMapper extends EntityMapper<PublisherDTO, Publisher> {
 
 
+    @Mapping(target = "events", ignore = true)
     @Mapping(target = "campaignRecords", ignore = true)
     @Mapping(target = "blacklistRecords", ignore = true)
     Publisher toEntity(PublisherDTO publisherDTO);

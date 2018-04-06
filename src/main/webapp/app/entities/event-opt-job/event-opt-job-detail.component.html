@@ -12,16 +12,16 @@
         <dd>
             <span>{{event.created | date:'medium'}}</span>
         </dd>
-        <dt><span>Campaign</span></dt>
-        <dd>
-            <div *ngIf="event.campaignId">
-                <a [routerLink]="['/campaign-opt-job', event.campaignId]">{{event.campaignId}}</a>
-            </div>
-        </dd>
         <dt><span>Publisher</span></dt>
         <dd>
             <div *ngIf="event.publisherId">
                 <a [routerLink]="['/publisher-opt-job', event.publisherId]">{{event.publisherId}}</a>
+            </div>
+        </dd>
+        <dt><span>Campaign</span></dt>
+        <dd>
+            <div *ngIf="event.campaignId">
+                <a [routerLink]="['/campaign-opt-job', event.campaignId]">{{event.campaignId}}</a>
             </div>
         </dd>
     </dl>

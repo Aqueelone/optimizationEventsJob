@@ -9,8 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { EventOptJob } from './event-opt-job.model';
 import { EventOptJobPopupService } from './event-opt-job-popup.service';
 import { EventOptJobService } from './event-opt-job.service';
-import { CampaignOptJob, CampaignOptJobService } from '../campaign-opt-job';
 import { PublisherOptJob, PublisherOptJobService } from '../publisher-opt-job';
+import { CampaignOptJob, CampaignOptJobService } from '../campaign-opt-job';
 
 @Component({
     selector: 'jhi-event-opt-job-dialog',
@@ -21,48 +21,26 @@ export class EventOptJobDialogComponent implements OnInit {
     event: EventOptJob;
     isSaving: boolean;
 
-    campaigns: CampaignOptJob[];
-
     publishers: PublisherOptJob[];
+
+    campaigns: CampaignOptJob[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private eventService: EventOptJobService,
-        private campaignService: CampaignOptJobService,
         private publisherService: PublisherOptJobService,
+        private campaignService: CampaignOptJobService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.campaignService
-            .query({filter: 'event-is-null'})
-            .subscribe((res: HttpResponse<CampaignOptJob[]>) => {
-                if (!this.event.campaignId) {
-                    this.campaigns = res.body;
-                } else {
-                    this.campaignService
-                        .find(this.event.campaignId)
-                        .subscribe((subRes: HttpResponse<CampaignOptJob>) => {
-                            this.campaigns = [subRes.body].concat(res.body);
-                        }, (subRes: HttpErrorResponse) => this.onError(subRes.message));
-                }
-            }, (res: HttpErrorResponse) => this.onError(res.message));
-        this.publisherService
-            .query({filter: 'event-is-null'})
-            .subscribe((res: HttpResponse<PublisherOptJob[]>) => {
-                if (!this.event.publisherId) {
-                    this.publishers = res.body;
-                } else {
-                    this.publisherService
-                        .find(this.event.publisherId)
-                        .subscribe((subRes: HttpResponse<PublisherOptJob>) => {
-                            this.publishers = [subRes.body].concat(res.body);
-                        }, (subRes: HttpErrorResponse) => this.onError(subRes.message));
-                }
-            }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.publisherService.query()
+            .subscribe((res: HttpResponse<PublisherOptJob[]>) => { this.publishers = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.campaignService.query()
+            .subscribe((res: HttpResponse<CampaignOptJob[]>) => { this.campaigns = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -99,11 +77,11 @@ export class EventOptJobDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackCampaignById(index: number, item: CampaignOptJob) {
+    trackPublisherById(index: number, item: PublisherOptJob) {
         return item.id;
     }
 
-    trackPublisherById(index: number, item: PublisherOptJob) {
+    trackCampaignById(index: number, item: CampaignOptJob) {
         return item.id;
     }
 }

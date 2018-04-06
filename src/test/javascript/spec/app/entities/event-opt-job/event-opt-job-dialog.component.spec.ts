@@ -9,8 +9,8 @@ import { OptimizationEventsJobTestModule } from '../../../test.module';
 import { EventOptJobDialogComponent } from '../../../../../../main/webapp/app/entities/event-opt-job/event-opt-job-dialog.component';
 import { EventOptJobService } from '../../../../../../main/webapp/app/entities/event-opt-job/event-opt-job.service';
 import { EventOptJob } from '../../../../../../main/webapp/app/entities/event-opt-job/event-opt-job.model';
-import { CampaignOptJobService } from '../../../../../../main/webapp/app/entities/campaign-opt-job';
 import { PublisherOptJobService } from '../../../../../../main/webapp/app/entities/publisher-opt-job';
+import { CampaignOptJobService } from '../../../../../../main/webapp/app/entities/campaign-opt-job';
 
 describe('Component Tests', () => {
 
@@ -26,8 +26,8 @@ describe('Component Tests', () => {
                 imports: [OptimizationEventsJobTestModule],
                 declarations: [EventOptJobDialogComponent],
                 providers: [
-                    CampaignOptJobService,
                     PublisherOptJobService,
+                    CampaignOptJobService,
                     EventOptJobService
                 ]
             })

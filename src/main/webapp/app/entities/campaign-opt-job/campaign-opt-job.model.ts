@@ -6,6 +6,7 @@ export class CampaignOptJob implements BaseEntity {
         public name?: string,
         public optimizationPropsId?: number,
         public blacklistId?: number,
+        public events?: BaseEntity[],
         public campaignRecords?: BaseEntity[],
     ) {
     }

@@ -29,6 +29,10 @@ public class Publisher implements Serializable {
 
     @OneToMany(mappedBy = "publisher")
     @JsonIgnore
+    private Set<Event> events = new HashSet<>();
+
+    @OneToMany(mappedBy = "publisher")
+    @JsonIgnore
     private Set<CampaignRecord> campaignRecords = new HashSet<>();
 
     @OneToMany(mappedBy = "publisher")
@@ -55,6 +59,31 @@ public class Publisher implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public Publisher events(Set<Event> events) {
+        this.events = events;
+        return this;
+    }
+
+    public Publisher addEvents(Event event) {
+        this.events.add(event);
+        event.setPublisher(this);
+        return this;
+    }
+
+    public Publisher removeEvents(Event event) {
+        this.events.remove(event);
+        event.setPublisher(null);
+        return this;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
     }
 
     public Set<CampaignRecord> getCampaignRecords() {
