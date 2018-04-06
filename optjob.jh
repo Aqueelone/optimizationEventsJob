@@ -29,11 +29,11 @@ entity BlackListRecord {
 }
 relationship OneToOne {
 	Campaign{optimizationProps} to OptimizationProps,
-    Campaign{blacklist} to BlackList,    
-	Event{campaign} to Campaign,
-    Event{publisher} to Publisher
+    Campaign{blacklist} to BlackList
 }
 relationship OneToMany {
+	Campaign{events} to Event,
+    Publisher{events} to Event,
 	Campaign{campaignRecord} to CampaignRecord,
     Publisher{campaignRecord} to CampaignRecord,
     BlackList{blacklistRecord} to BlackListRecord,
