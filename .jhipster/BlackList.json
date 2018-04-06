@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "blacklistRecord",
+            "otherEntityName": "blackListRecord",
+            "otherEntityRelationshipName": "blackList"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180406103544",
+    "entityTableName": "black_list",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "optJob"
+}

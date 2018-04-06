@@ -1,0 +1,31 @@
+package com.acceptic.java.test.service.mapper;
+
+import com.acceptic.java.test.domain.*;
+import com.acceptic.java.test.service.dto.CampaignDTO;
+
+import org.mapstruct.*;
+
+/**
+ * Mapper for the entity Campaign and its DTO CampaignDTO.
+ */
+@Mapper(componentModel = "spring", uses = {OptimizationPropsMapper.class, BlackListMapper.class})
+public interface CampaignMapper extends EntityMapper<CampaignDTO, Campaign> {
+
+    @Mapping(source = "optimizationProps.id", target = "optimizationPropsId")
+    @Mapping(source = "blacklist.id", target = "blacklistId")
+    CampaignDTO toDto(Campaign campaign);
+
+    @Mapping(source = "optimizationPropsId", target = "optimizationProps")
+    @Mapping(source = "blacklistId", target = "blacklist")
+    @Mapping(target = "campaignRecords", ignore = true)
+    Campaign toEntity(CampaignDTO campaignDTO);
+
+    default Campaign fromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Campaign campaign = new Campaign();
+        campaign.setId(id);
+        return campaign;
+    }
+}
