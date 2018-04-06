@@ -3,6 +3,12 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "events",
+            "otherEntityName": "event",
+            "otherEntityRelationshipName": "publisher"
+        },
+        {
+            "relationshipType": "one-to-many",
             "relationshipName": "campaignRecord",
             "otherEntityName": "campaignRecord",
             "otherEntityRelationshipName": "publisher"

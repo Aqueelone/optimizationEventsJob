@@ -2,20 +2,16 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "relationshipName": "campaign",
-            "otherEntityName": "campaign",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "event"
-        },
-        {
-            "relationshipType": "one-to-one",
             "relationshipName": "publisher",
             "otherEntityName": "publisher",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "event"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "campaign",
+            "otherEntityName": "campaign",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

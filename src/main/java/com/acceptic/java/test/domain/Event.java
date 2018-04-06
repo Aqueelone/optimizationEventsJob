@@ -28,13 +28,11 @@ public class Event implements Serializable {
     @Column(name = "created")
     private Instant created;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Campaign campaign;
-
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private Publisher publisher;
+
+    @ManyToOne
+    private Campaign campaign;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -71,19 +69,6 @@ public class Event implements Serializable {
         this.created = created;
     }
 
-    public Campaign getCampaign() {
-        return campaign;
-    }
-
-    public Event campaign(Campaign campaign) {
-        this.campaign = campaign;
-        return this;
-    }
-
-    public void setCampaign(Campaign campaign) {
-        this.campaign = campaign;
-    }
-
     public Publisher getPublisher() {
         return publisher;
     }
@@ -95,6 +80,19 @@ public class Event implements Serializable {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public Campaign getCampaign() {
+        return campaign;
+    }
+
+    public Event campaign(Campaign campaign) {
+        this.campaign = campaign;
+        return this;
+    }
+
+    public void setCampaign(Campaign campaign) {
+        this.campaign = campaign;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

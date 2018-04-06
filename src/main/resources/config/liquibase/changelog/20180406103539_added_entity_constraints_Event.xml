@@ -8,17 +8,17 @@
     -->
     <changeSet id="20180406103539-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="campaign_id"
-                                 baseTableName="event"
-                                 constraintName="fk_event_campaign_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="campaign"/>
-
         <addForeignKeyConstraint baseColumnNames="publisher_id"
                                  baseTableName="event"
                                  constraintName="fk_event_publisher_id"
                                  referencedColumnNames="id"
                                  referencedTableName="publisher"/>
+
+        <addForeignKeyConstraint baseColumnNames="campaign_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_campaign_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="campaign"/>
 
     </changeSet>
 </databaseChangeLog>

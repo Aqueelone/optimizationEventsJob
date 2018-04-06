@@ -37,6 +37,10 @@ public class Campaign implements Serializable {
 
     @OneToMany(mappedBy = "campaign")
     @JsonIgnore
+    private Set<Event> events = new HashSet<>();
+
+    @OneToMany(mappedBy = "campaign")
+    @JsonIgnore
     private Set<CampaignRecord> campaignRecords = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -85,6 +89,31 @@ public class Campaign implements Serializable {
 
     public void setBlacklist(BlackList blackList) {
         this.blacklist = blackList;
+    }
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public Campaign events(Set<Event> events) {
+        this.events = events;
+        return this;
+    }
+
+    public Campaign addEvents(Event event) {
+        this.events.add(event);
+        event.setCampaign(this);
+        return this;
+    }
+
+    public Campaign removeEvents(Event event) {
+        this.events.remove(event);
+        event.setCampaign(null);
+        return this;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
     }
 
     public Set<CampaignRecord> getCampaignRecords() {
